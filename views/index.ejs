@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/modalCliente.css" />
+    <link rel="stylesheet" href="css/table.css" />
+
+    <!-- JavaScript -->
+    <script src="../js/index.js" defer type="module"></script>
+    <script src="../js/validaCEP.js" defer type="module"></script>
+    <script src="../js/verificaCPF.js" defer type="module"></script>
+    <title>System Process J.</title>
+  </head>
+  <body>
+    <header class="headerPrincipal">
+      <img class="logo" src="../images/logo.svg" alt="logo" />
+      <h1>PROCESS J.</h1>
+    </header>
+    <main>
+      <div class="navMenu">
+        <button id="btnNovoCliente">Novo cliente</button>
+        <input
+          type="text"
+          id="pesquisarCliente"
+          placeholder="Pesquisar cliente"
+        />
+        <a href="#" id="btnBuscar">Buscar</a>
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Novo Cliente</h2>
+            <span class="modal-close" id="modalClose">&#10006;</span>
+          </header>
+          <form id="form" action="/cadastrar" method="post" class="modal-form">
+            <input
+              type="text"
+              id="nomeCliente"
+              placeholder="Nome e Sobrenome"
+              name="nome"
+              required
+            />
+            <input
+              type="number"
+              id="cpf"
+              placeholder="CPF"
+              name="cpf"
+              required
+            />
+            <input
+              type="number"
+              id="cep"
+              placeholder="CEP"
+              name="cep"
+              required
+            />
+            <input
+              type="text"
+              id="rua"
+              placeholder="Nome da rua"
+              name="rua"
+              required
+            />
+            <input
+              type="text"
+              id="numeroEndereco"
+              placeholder="N°"
+              minlength="1"
+              maxlength="4"
+              name="num"
+              required
+            />
+            <input
+              type="text"
+              id="bairro"
+              placeholder="Bairro"
+              name="bai"
+              required
+            />
+            <input
+              type="tel"
+              id="telefone"
+              placeholder="Telefone: (xx)99999-9999"
+              name="tel"
+              required
+            />
+            <footer class="modal-footer">
+              <button type="submit" id="salvarCliente">Salvar</button>
+              <button type="button" id="cancelarCliente">Cancelar</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

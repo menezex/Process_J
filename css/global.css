@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(185, 199, 25);
+}
+
+main {
+  flex-grow: 1;
+  align-items: flex-start;
+  height: 80vh;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+  gap: 25px;
+  background-color: #123a32;
+}
+
+.headerPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.navMenu {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: currentColor;
+}
+
+#pesquisarCliente {
+  width: 250px;
+  height: 25px;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 1rem;
+}
+
+.listagemCliente {
+  margin-top: 5px;
+  padding: 2rem;
+}
+
+.listagemCliente > h1 {
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.727);
+}
+
+a > img {
+  width: 24px;
+  height: 24px;
+}

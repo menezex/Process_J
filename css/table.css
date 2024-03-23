@@ -1,0 +1,36 @@
+.tableSessao {
+  height: 450px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1000px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fefce8;
+  color: #ca8a04;
+  font-size: 18px;
+}
+
+th,
+td {
+  border-bottom: 1px solid black;
+  padding: 10px 20px;
+  word-break: break-all;
+  text-align: center;
+}
+
+td {
+  color: #fefce8;
+}
+
+.acoes {
+  display: flex;
+  justify-content: space-around;
+}
