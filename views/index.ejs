@@ -14,6 +14,8 @@
     <script src="../js/index.js" defer type="module"></script>
     <script src="../js/validaCEP.js" defer type="module"></script>
     <script src="../js/verificaCPF.js" defer type="module"></script>
+    <script src="../js/excluirCliente.js" defer type="module"></script>
+
     <title>System Process J.</title>
   </head>
   <body>
@@ -24,6 +26,9 @@
     <main>
       <div class="navMenu">
         <button id="btnNovoCliente">Novo cliente</button>
+        <a href="/processos"
+          ><button id="btnNovoProcesso">Novo processo</button></a
+        >
         <input
           type="text"
           id="pesquisarCliente"
@@ -94,6 +99,53 @@
               <button type="button" id="cancelarCliente">Cancelar</button>
             </footer>
           </form>
+        </div>
+      </div>
+      <div class="listagemCliente">
+        <h1>Lista de clientes</h1>
+        <div class="tableSessao">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>CEP</th>
+                <th>Rua</th>
+                <th>Bairro</th>
+                <th>N° Endereço</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.forEach(item => { %>
+              <tr>
+                <td><%= item.NOME %></td>
+                <td><%= item.CPF %></td>
+                <td><%= item.CEP %></td>
+                <td><%= item.RUA %></td>
+                <td><%= item.BAIRRO %></td>
+                <td><%= item.END_NUMERO %></td>
+                <td><%= item.TELEFONE %></td>
+                <td>
+                  <div class="acoes">
+                    <button
+                      class="btnExcluirCliente"
+                      id="<%= item.CPF %>-<%= item.NOME %>"
+                      title="Excluir"
+                    ></button>
+                    <a href="/editarCliente/">
+                      <img src="../images/editar.svg" title="Editar" />
+                    </a>
+                    <a href="/processos/<%= item.CPF %>">
+                      <img src="../images/processo.svg" title="Processo" />
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>

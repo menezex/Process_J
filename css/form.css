@@ -6,7 +6,7 @@ form {
 }
 
 form > input {
-  width: 180px;
+  width: 190px;
   height: 35px;
   padding: 8px;
   font-size: 15px;
@@ -21,3 +21,4 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+

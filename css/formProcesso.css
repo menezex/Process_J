@@ -1,0 +1,67 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+form > input {
+  width: 180px;
+  height: 35px;
+  padding: 8px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #123a32;
+  color: brown;
+  margin-right: 5px;
+  margin-top: 8px;
+}
+
+form > label {
+  margin-top: 16px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input:disabled {
+  background-color: rgba(0, 0, 0, 0.063),
+}
+
+.processo-prazo {
+  margin-top: 15px;
+}
+
+input[type='radio'] {
+  margin-left: 0.5rem;
+}
+
+input[type='date'] {
+  width: 130px;
+}
+
+.andamento-processo {
+  display: flex;
+  margin-top: 10px;
+  height: 80px;
+}
+
+.andamento-processo > label {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.andamento-processo > textarea {
+  width: 500px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: brown;
+}
+
+

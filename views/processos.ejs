@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/formProcesso.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/modalCliente.css" />
+    <link rel="stylesheet" href="css/modalProcesso.css" />
+    <link rel="stylesheet" href="css/table.css" />
+
+    <!-- JavaScript -->
+    <script src="../js/clienteProcesso.js" defer type="module"></script>
+    <script src="../js/cadastroProcesso.js" defer type="module"></script>
+    <script src="../js/verificarProcesso.js" defer type="module"></script>
+
+    <title>System Process J.</title>
+  </head>
+  <body>
+    <header class="headerPrincipal">
+      <img class="logo" src="../images/logo.svg" alt="logo" />
+      <h1>PROCESS J.</h1>
+    </header>
+    <main>
+      <div>
+        <div class="modal-content-processo">
+          <header class="modal-header-processo">
+            <h2>Novo Processo</h2>
+          </header>
+          <div class="divClienteProcesso">
+            <label for="cliente" class="labelClienteProcesso"
+              >Selecionar cliente:</label
+            >
+            <select name="cliente" id="clienteProcesso">
+              <option disabled selected>Selecione</option>
+              <% data.forEach(function(item) { %>
+              <option value="<%= item.cpf %>"><%= item.nome %></option>
+              <% }); %>
+            </select>
+          </div>
+          <form
+            id="form"
+            action="/cadastrarProcesso"
+            method="post"
+            class="modal-form"
+          >
+            <label>Nome:</label>
+            <input
+              type="text"
+              id="nomeClienteProcesso"
+              placeholder="Nome e Sobrenome"
+              name="nomeCliente"
+              disabled
+            />
+            <label>CPF:</label>
+            <input
+              type="number"
+              id="cpfProcesso"
+              placeholder="CPF"
+              name="cpf"
+              disabled
+            />
+            <label>Rua:</label>
+            <input
+              type="text"
+              id="ruaProcesso"
+              placeholder="Nome da rua"
+              name="rua"
+              disabled
+            />
+            <label>N°:</label>
+            <input
+              type="text"
+              id="numeroEnderecoProcesso"
+              placeholder="N°"
+              minlength="1"
+              maxlength="4"
+              name="num"
+              disabled
+            />
+            <label>Bairro:</label>
+            <input
+              type="text"
+              id="bairroProcesso"
+              placeholder="Bairro"
+              name="bai"
+              disabled
+            />
+            <label>Telefone:</label>
+            <input
+              type="tel"
+              id="telefoneProcesso"
+              placeholder="Telefone: (xx)99999-9999"
+              name="tel"
+              disabled
+            />
+            <label for="">N° Processo:</label>
+            <input
+              type="number"
+              id="numProcesso"
+              placeholder="N° do processo"
+              name="numProcesso"
+              required
+            />
+            <label for="">Parte contrária:</label>
+            <input
+              type="text"
+              id="partContrariaProcesso"
+              placeholder="Parte contrária"
+              name="partContrariaProcesso"
+              required
+            />
+            <label for="">Data de Entrada:</label>
+            <input
+              type="date"
+              id="dataProcesso"
+              placeholder="Data de Entrada"
+              name="dataProcesso"
+              required
+            />
+            <div class="processo-prazo">
+              <label>Prazo para cumprir?</label>
+              <input type="radio" id="sim" name="prazo" value="sim" />
+              <label for="sim">Sim</label>
+              <input type="radio" id="nao" name="prazo" value="nao" checked />
+              <label for="nao">Não</label>
+            </div>
+            <label for="">Data do Prazo:</label>
+            <input
+              type="date"
+              id="dataPrazoProcesso"
+              placeholder="Data do Prazo"
+              name="dataPrazoProcesso"
+              disabled
+            />
+            <div class="andamento-processo">
+              <label for="andamento">Causa do processo:</label>
+              <textarea
+                name="causaProcesso"
+                id="causaProcesso"
+                cols="50"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <footer class="modal-footer-processo">
+              <button type="submit" id="salvarProcesso">Salvar</button>
+              <a href="/"
+                ><button type="button" id="cancelarProcesso">
+                  Cancelar
+                </button></a
+              >
+            </footer>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

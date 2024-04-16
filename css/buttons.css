@@ -25,7 +25,29 @@ button {
   background-color: rgb(230, 250, 0);
 }
 
-#salvarCliente {
+#btnNovoProcesso {
+  height: 35px;
+  width: 180px;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: italic;
+  margin-left: 1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  color: black;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(53, 133, 69);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#btnNovoProcesso:hover {
+  background-color: rgb(7, 209, 47);
+}
+
+#salvarCliente,
+#salvarProcesso {
   background-color: rgb(52, 152, 35);
   cursor: pointer;
   letter-spacing: 2px;
@@ -33,7 +55,8 @@ button {
   text-align: center;
 }
 
-#cancelarCliente {
+#cancelarCliente,
+#cancelarProcesso {
   background-color: rgba(255, 0, 0, 0.868);
   cursor: pointer;
   letter-spacing: 2px;
@@ -56,4 +79,23 @@ button {
 
 #btnBuscar:hover {
   background-color: rgba(0, 0, 0, 0.739);
+}
+
+.btnExcluirCliente {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  height: 30px;
+  width: 25px;
+  background-image: url("../images/delete.svg");
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  background-position: center;
+  border: none;
+  padding: 10px;
 }

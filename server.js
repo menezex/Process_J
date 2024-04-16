@@ -35,7 +35,6 @@ app.get("/", (req, res) => {
       console.error("Erro ao consultar o MySQL:", err);
       res.status(500).send("Erro interno do servidor");
     } else {
-
       res.render("index", { data: results });
     }
   });
@@ -55,12 +54,48 @@ app.post("/cadastrar", (req, res) => {
   let sql = `INSERT INTO cliente 
   (NOME, CPF , CEP , RUA , BAIRRO, END_NUMERO , TELEFONE) values ('${data.nome}', '${data.cpf}', '${data.cep}', '${data.rua}', '${data.bai}', '${data.num}', '${data.tel}')`;
   connection.query(sql, (erro, retorno) => {
-    if(erro) throw erro
+    if (erro) throw erro;
 
     res.redirect("/");
   });
-  
+});
 
+//Cadastro Processos
+app.post("/cadastrarProcesso", (req, res) => {
+  const processo = {
+    nome: req.body.nomeCliente,
+    cpf: req.body.cpf,
+    processo: req.body.numProcesso,
+    parte: req.body.partContrariaProcesso,
+    dataProcesso: req.body.dataProcesso,
+    prazo: req.body.prazo,
+    causa: req.body.causaProcesso,
+    dataPrazo: req.body.dataPrazoProcesso,
+  };
+
+  if (processo.prazo === "nao") {
+    let sql = `INSERT INTO processos
+    (NOME, CPF, PROCESSO, PARTE, DATA_PROCESSO, PRAZO, CAUSA) 
+    values
+    ('${processo.nome}', '${processo.cpf}', '${processo.processo}','${processo.parte}', '${processo.dataProcesso}', '${processo.prazo}', '${processo.causa}')`;
+
+    connection.query(sql, (erro, retorno) => {
+      if (erro) throw erro;
+
+      res.redirect("/");
+    });
+  } else {
+    let sql = `INSERT INTO processos
+    (NOME, CPF, PROCESSO, PARTE, DATA_PROCESSO, PRAZO, CAUSA, DATA_PRAZO) 
+    values
+    ('${processo.nome}', '${processo.cpf}', '${processo.processo}','${processo.parte}', '${processo.dataProcesso}', '${processo.prazo}', '${processo.causa}','${processo.dataPrazo}')`;
+
+    connection.query(sql, (erro, retorno) => {
+      if (erro) throw erro;
+
+      res.redirect("/");
+    });
+  }
 });
 
 //Delete
@@ -69,21 +104,41 @@ app.get("/deletar/:cpf", function (req, res) {
 
   connection.query(sql, function (erro, retorno) {
     if (erro) throw erro;
-
-    res.redirect("/");
   });
 });
 
 //Buscar CPF
-app.get('/buscar/:cpf', function(req, res) {
+app.get("/buscar/:cpf", function (req, res) {
   let sql = `SELECT * FROM cliente where CPF = ${req.params.cpf}`;
 
-  connection.query(sql, function(erro, retorno){
-    if(erro) throw erro
+  connection.query(sql, function (erro, retorno) {
+    if (erro) throw erro;
 
-    res.send(retorno)
-  })
-})
+    res.send(retorno);
+  });
+});
+
+//Buscar PROCESSO
+app.get("/buscarProcesso/:processo", function (req, res) {
+  let sql = `SELECT * FROM processos where PROCESSO = ${req.params.processo}`;
+  connection.query(sql, function (erro, retorno) {
+    if (erro) throw erro;
+
+    res.send(retorno);
+  });
+});
+
+//Rota de tela de processos
+app.get("/processos", (req, res) => {
+  connection.query("SELECT nome, cpf FROM cliente", (err, results) => {
+    if (err) {
+      console.error("Erro ao consultar o MySQL:", err);
+      res.status(500).send("Erro interno do servidor");
+    } else {
+      res.render("processos.ejs", { data: results });
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
