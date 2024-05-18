@@ -19,6 +19,8 @@ const excluirCliente = (ev) => {
     ) {
       excluirClienteBanco(cpf);
       alert("Cliente excluido com sucesso!");
+    } else {
+      return;
     }
   }
 };

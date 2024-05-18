@@ -105,6 +105,7 @@ app.get("/deletar/:cpf", function (req, res) {
   connection.query(sql, function (erro, retorno) {
     if (erro) throw erro;
   });
+  res.redirect("/");
 });
 
 //Buscar CPF

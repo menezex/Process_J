@@ -18,9 +18,10 @@
   font-size: 1rem;
   padding-top: 0.5rem;
   color: black;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   background-color: rgb(188, 203, 24);
 }
-
 
 .modal-footer-processo {
   height: 10vh;
@@ -48,7 +49,7 @@
   gap: 1rem;
 }
 
-.labelClienteProcesso{
+.labelClienteProcesso {
   font-size: 18px;
   letter-spacing: 1px;
 }
