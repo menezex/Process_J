@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
+const { format } = require("date-fns");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -100,10 +101,15 @@ app.post("/cadastrarProcesso", (req, res) => {
 
 //Delete
 app.get("/deletar/:cpf", function (req, res) {
-  let sql = `DELETE FROM cliente where CPF = ${req.params.cpf}`;
+  let sqlCliente = `DELETE FROM cliente where CPF = ${req.params.cpf}`;
+  let sqlProcesso = `DELETE FROM processos where CPF = ${req.params.cpf}`;
 
-  connection.query(sql, function (erro, retorno) {
+  connection.query(sqlCliente, function (erro, retorno) {
     if (erro) throw erro;
+
+    connection.query(sqlProcesso, function (erro, retorno) {
+      if (erro) throw erro;
+    });
   });
   res.redirect("/");
 });
@@ -138,6 +144,46 @@ app.get("/processos", (req, res) => {
     } else {
       res.render("processos.ejs", { data: results });
     }
+  });
+});
+
+//Rota de tela do processo do cliente
+app.get("/exibirProcesso/:cpf", function (req, res) {
+  let sqlCliente = `SELECT * FROM cliente WHERE CPF = '${req.params.cpf}'`;
+  let sqlProcesso = `SELECT * FROM processos WHERE CPF = '${req.params.cpf}'`;
+
+  let dataCliente;
+  let dataProcesso;
+
+  connection.query(sqlCliente, function (erro, retorno) {
+    if (erro) throw erro;
+    dataCliente = retorno;
+
+    connection.query(sqlProcesso, function (erro, retorno) {
+      if (erro) {
+        alert("Cliente não possui processos cadastrados");
+        res.redirect("/");
+      }
+      dataProcesso = retorno;
+
+      //Formatar datas
+      const timeZone = "America/Sao_Paulo";
+      dataProcesso.forEach((processo) => {
+        const brasiliaDate = new Date(processo.DATA_PROCESSO);
+        const brasiliaDate2 = new Date(processo.DATA_PRAZO);
+        processo.DATA_PROCESSO_FORMATADA = format(brasiliaDate, "dd/MM/yyyy", {
+          timeZone,
+        });
+        processo.DATA_PRAZO_FORMATADA = format(brasiliaDate2, "dd/MM/yyyy", {
+          timeZone,
+        });
+      });
+
+      res.render("viewProcessos.ejs", {
+        cliente: dataCliente,
+        processo: dataProcesso,
+      });
+    });
   });
 });
 

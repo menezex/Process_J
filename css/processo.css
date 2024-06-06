@@ -1,0 +1,49 @@
+.container-dados {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  height: 80%;
+}
+
+.container-cliente {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  gap: 10px;
+  border: 2px solid rgb(185, 199, 25);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.container-processo {
+  border: 2px solid black;
+  width: 650px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid rgb(185, 199, 25);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.container-cliente h1,
+.container-processo h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+  text-decoration: overline;
+  color: #123a32;
+}
+
+.container-cliente p,
+.container-processo p {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.dados-cliente-processo {
+  margin-left: 1rem;
+}

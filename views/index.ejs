@@ -15,6 +15,7 @@
     <script src="../js/validaCEP.js" defer type="module"></script>
     <script src="../js/verificaCPF.js" defer type="module"></script>
     <script src="../js/excluirCliente.js" defer type="module"></script>
+    <script src="../js/visualizarProcesso.js" defer type="module"></script>
 
     <title>System Process J.</title>
   </head>
@@ -129,17 +130,18 @@
                 <td><%= item.TELEFONE %></td>
                 <td>
                   <div class="acoes">
-                    <button
+                    <a
                       class="btnExcluirCliente"
                       id="<%= item.CPF %>-<%= item.NOME %>"
                       title="Excluir"
-                    ></button>
-                    <a href="/editarCliente/">
-                      <img src="../images/editar.svg" title="Editar" />
-                    </a>
-                    <a href="/processos/<%= item.CPF %>">
-                      <img src="../images/processo.svg" title="Processo" />
-                    </a>
+                    ></a>
+                    <a class="btnEditarCliente" title="Editar"></a>
+                    <a
+                      href="/exibirProcesso/<%= item.CPF %>"
+                      class="btnExibirProcesso"
+                      title="Exibir Processo"
+                      >a</a
+                    >
                   </div>
                 </td>
               </tr>

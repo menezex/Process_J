@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/buttons.css" />
+    <link rel="stylesheet" href="../css/formProcesso.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/modalCliente.css" />
+    <link rel="stylesheet" href="../css/modalProcesso.css" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <link rel="stylesheet" href="../css/processo.css" />
+    
+    <!-- JavaScript -->
+    <!-- <script src="../js/clienteProcesso.js" defer type="module"></script>
+    <script src="../js/cadastroProcesso.js" defer type="module"></script>
+    <script src="../js/verificarProcesso.js" defer type="module"></script> -->
+
+    <title>System Process J.</title>
+  </head>
+  <body>
+    <header class="headerPrincipal">
+      <img class="logo" src="../images/logo.svg" alt="logo" />
+      <h1>PROCESS J.</h1>
+    </header>
+    <main>
+      <div>
+        <div class="modal-content-processo">
+          <header class="modal-header-processo">
+            <h2>Dados do Processo</h2>
+          </header>
+          <div class="container-dados">
+            <!-- Dados do cliente -->
+            <div class="container-cliente">
+              <h1>Informações do Cliente</h1>
+                <p>Nome do cliente: <span class="dados-cliente-processo"><%= cliente[0].NOME %></span></p>
+                <p>CPF:<span class="dados-cliente-processo"> <%= cliente[0].CPF %></span></p>
+                <p>CEP:<span class="dados-cliente-processo"> <%= cliente[0].CEP %></span></p>
+                <p>Endereço:<span class="dados-cliente-processo"><%= cliente[0].RUA %> - <%= cliente[0].END_NUMERO %></span></p>
+                <p>Bairro:<span class="dados-cliente-processo"> <%= cliente[0].BAIRRO %></span></p>
+                <p>Telefone:<span class="dados-cliente-processo"> <%= cliente[0].TELEFONE %></span></p>
+            </div>
+            <!-- Dados do processo -->
+            <div class="container-processo">
+              <% if (processo.length > 0) {%>
+                <h1>Informações do Processo</h1>
+                <p>N° do Processo:<span class="dados-cliente-processo"> <%=processo[0].PROCESSO %> </span></p>
+                <p>Parte do Processo:<span class="dados-cliente-processo"> <%=processo[0].PARTE %> </span></p>
+                <p>Causa:<span class="dados-cliente-processo"> <%=processo[0].CAUSA %> </span></p>
+                <p>Data do Processo:<span class="dados-cliente-processo"> <%=processo[0].DATA_PROCESSO_FORMATADA %> </span></p>
+                <p>Data do Prazo:<span class="dados-cliente-processo"> <%=processo[0].DATA_PRAZO_FORMATADA %> </span></p>
+              <% } else { %>
+                <h1>Cliente não possui processos cadastrados</h1>
+              <% } %>
+            </div>
+          </div>
+            <footer class="modal-footer-processo">
+              <a href="/"
+                ><button type="button" id="cancelarProcesso">
+                   Voltar
+                </button></a
+              >
+            </footer>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
